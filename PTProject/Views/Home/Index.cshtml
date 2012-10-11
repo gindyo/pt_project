@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>@ViewBag.Message</h2>
+<div id="search_box">
+
+    <form action="/Results/index" method="post">
+        <input type="text" id="kw_search"name="kw_search" size="55" placeholder="Enter your search term here..." />
+        <br />
+        <input type="submit" value=" Search " />
+    </form>
+</div>
+

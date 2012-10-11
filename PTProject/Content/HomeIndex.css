@@ -1,0 +1,25 @@
+﻿#search_box {
+    text-align: center;
+     width: 100%;
+     float: left;
+}
+
+#kw_search {
+    height: 25px;
+    width: 400px;
+    border: 1px solid;
+    border-color: #ddd7d7
+}
+
+#content {
+    
+   width: 600px
+}
+
+input[type="submit"] {
+    width: 150px
+}
+
+#right_panel {
+    
+}
