@@ -27,7 +27,11 @@ namespace PTProject
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
-            
+            routes.MapRoute(
+                "SearchResults", // Route name
+                "{controller}/{action}/{search_types}/{search_term}", // URL with parameters
+                new { controller = "Results", action = "Index" } // Parameter defaults
+            );
 
         }
 

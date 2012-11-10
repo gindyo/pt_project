@@ -119,6 +119,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CaseStudyModels.cs" />
     <Compile Include="Interfaces\IReviewable.cs" />
+    <Compile Include="Models\CommunicatorModel.cs" />
     <Compile Include="Models\InterventionModels.cs" />
     <Compile Include="Models\FakeDB.cs" />
     <Compile Include="Models\SearchResults.cs" />

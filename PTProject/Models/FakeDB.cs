@@ -61,19 +61,20 @@ namespace PTProject.Models
         public List<Searchable> find(String[] whereArray, String search_term)
         {
             List<Searchable> results = new List<Searchable>();
-            
-            
+
+            try
+            {
                 if (whereArray[0] != "all")
                 {
                     List<int> indexes = new List<int>();
                     whereArray.ToList<String>().ForEach(delegate(String where)
                         {
                             List<String> where_to_search = (List<String>)this.GetType().GetProperty(where).GetValue(this);
-                            indexes.AddRange( search_in(where_to_search, search_term));
-                            
+                            indexes.AddRange(search_in(where_to_search, search_term));
+
                         });
 
-                    results = prepare_results(indexes.Distinct().ToList());
+                    results = prepare_results(indexes.Distinct().ToList(), search_term);
                 }
                 else
                 {
@@ -87,14 +88,19 @@ namespace PTProject.Models
                     { indexes.AddRange(i2); }
                     if (i3 != null)
                     { indexes.AddRange(i3); }
-                    results = prepare_results(indexes.Distinct().ToList());
+                    results = prepare_results(indexes.Distinct().ToList(), search_term);
                 }
+            }
+            catch
+            {
+                return new List<Searchable>();
+            }
             
             return results;
         }
 
               
-        private List<Searchable> prepare_results(List<int> indexes)
+        private List<Searchable> prepare_results(List<int> indexes, String search_term)
         {
             List<Searchable> result = new List<Searchable>();
             foreach (int el in indexes)
@@ -102,10 +108,11 @@ namespace PTProject.Models
                 Type type = Type.GetType(System.Reflection.Assembly.GetExecutingAssembly().GetName().Name + ".Models." + types[el]);
                 object typeInstace = Activator.CreateInstance(type);
 
-                Searchable item = (Searchable)typeInstace;
+                Searchable item = typeInstace as Searchable;
                 item.title = titles[el];
                 item.content = contents[el];
                 item.id = ids[el];
+                item.search_term = search_term ;
                 result.Add(item);
             }
             return result;

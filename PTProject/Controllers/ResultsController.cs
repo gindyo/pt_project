@@ -14,12 +14,12 @@ namespace PTProject.Controllers
         //
         // GET: /Results/
 
-        public ActionResult Index(String[] searchTypes, String searchTerm)
+        public ActionResult Index(String[] search_types, String search_term)
         {
             List<Searchable> results = new List<Searchable>();
            
             FakeDB db = new FakeDB();
-            results = db.find( searchTypes, searchTerm);
+            results = db.find( search_types, search_term);
               
 
              test_data = results;

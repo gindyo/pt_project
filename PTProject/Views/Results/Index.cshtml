@@ -13,7 +13,13 @@
 </div>
 
 <div id="results_content">
-
+@{foreach(PTProject.AbstractClasses.Searchable el in ViewBag.results)
+  {
+      <a><em>@el.title</em></a><br />
+      @el.short_content();
+  }
+        
+}
 <p>
 <a><em>*Nancy Koplin - practice pattern 6D </em></a><br />
 ...Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam <b>nonummy nibh</b> euismod tincidunt ut laoreet dolore magna aliquam erat volutpat...

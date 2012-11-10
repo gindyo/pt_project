@@ -14,14 +14,6 @@ namespace PTProject.Models
 
         public string title { get; set; }
 
-        public string short_content(String reference)
-        {
-            int refLocation = content.LastIndexOf(reference);
-            int beginningOfShortContent = (refLocation - 35) < 0 ? 0 : refLocation - 35;
-            int endOfShortContent = refLocation + 45 > this.content.Length ? this.content.Length : refLocation + 45; 
-            return content.Substring(beginningOfShortContent, endOfShortContent) + (endOfShortContent==this.content.Length ? "." : " ...");
-        }
-
         public string link()
         {
             return "/interventions/details/" + id;
