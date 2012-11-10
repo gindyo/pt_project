@@ -107,13 +107,22 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractClasses\Searchable.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\ICommentable.cs" />
+    <Compile Include="Interfaces\ISearchable.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CaseStudyModels.cs" />
+    <Compile Include="Interfaces\IReviewable.cs" />
+    <Compile Include="Models\InterventionModels.cs" />
+    <Compile Include="Models\FakeDB.cs" />
+    <Compile Include="Models\SearchResults.cs" />
+    <Compile Include="Models\UserModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
