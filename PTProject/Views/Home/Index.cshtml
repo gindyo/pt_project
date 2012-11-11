@@ -8,7 +8,24 @@
     <form action="/Results/index" method="post">
         <input type="text" id="search_term"name="search_term" size="55" placeholder="Enter your search term here..." />
         <br />
-        <div><input type="checkbox" id="all" name="search_types" value="all" /></div>
+        <div id="container">
+          <a href="javascript:void(0);" id="filters_a" data-state="0">use filters for advanced search...</a>
+          <div id="filters">
+            <div class="filter">
+                All <input type="checkbox" id="all" name="search_types" value="all"  />
+            </div >
+            <div class="filter">
+                Titles <input type="checkbox" id="titles" name="search_types" value="titles" class="search_types" />
+            </div>
+            <div class="filter">
+                Contents <input type="checkbox" id="contents" name="search_types" value="contents"  class="search_types"/>
+            </div>
+            <div class="filter">
+                Keywords <input type="checkbox" id="keywords" name="search_types" value="keywords"  class="search_types"/>
+            </div>
+            </div>
+        </div>
+        <div class="clear"></div>
         <input type="submit" value=" Search " />
     </form>
 </div>

@@ -23,3 +23,28 @@ input[type="submit"] {
 #right_panel {
     
 }
+#container {
+    
+    height: 60px;
+}
+
+#filters {
+    position: absolute;
+    width: 500px;
+    margin-left: 50%;
+    left: -250px;
+    display: none;
+     
+}
+ .filter{
+     text-align: center;
+    float: left;
+    width: 120px;
+}
+  
+
+ input#filters{
+   clear: none;
+}
+
+

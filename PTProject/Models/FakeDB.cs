@@ -26,7 +26,7 @@ namespace PTProject.Models
             this.ids = new List<string>();
 
 
-            contents.Add("this is the first case study. It does not consist of anything");
+            contents.Add("this is the first case study. It does not consist of anything. And this is some random text to make it bigger");
             titles.Add("My first case study");
             types.Add("CaseStudy");
             keywords.Add("bla");
@@ -79,8 +79,8 @@ namespace PTProject.Models
                 else
                 {
                     List<int> indexes = new List<int>();
-                    List<int> i1 = search_in(contents, search_term);
-                    List<int> i2 = search_in(titles, search_term);
+                    List<int> i1 = search_in(titles, search_term);
+                    List<int> i2 = search_in(contents, search_term);
                     List<int> i3 = search_in(keywords, search_term);
                     if (i1 != null)
                     { indexes.AddRange(i1); }
