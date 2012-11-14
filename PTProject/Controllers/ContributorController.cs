@@ -11,9 +11,9 @@ namespace PTProject.Controllers
         //
         // GET: /Contributor/
 
-        public ActionResult Index(string name)
+        public ActionResult Index()
         {
-            return View(name);
+            return View();
         }
 
     }
