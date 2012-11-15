@@ -14,9 +14,6 @@ namespace PTProject.Models
         public CaseStudy(String t, String c, String k)
         {
             this.title = t;
-            this.content = c;
-            this.keywords = k;
-
         }
 
         

@@ -9,7 +9,7 @@ using PTProject.AbstractClasses;
 
 namespace PTProject.Models
 {
-    public class FakeDB
+    public class FakeDB : IStorage
     {
         public List<String> contents { get; private set; }
         public List<String> titles { get; private set; }
@@ -28,7 +28,7 @@ namespace PTProject.Models
 
             contents.Add("this is the first case study. It does not consist of anything. And this is some random text to make it bigger");
             titles.Add("My first case study");
-            types.Add("CaseStudy");
+            types.Add("medical history");
             keywords.Add("bla");
             ids.Add("1");
 

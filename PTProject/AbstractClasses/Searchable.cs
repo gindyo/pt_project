@@ -20,6 +20,8 @@ namespace PTProject.AbstractClasses
 
         public string link { get; set; }
 
+        public int parent_id { get; set; }
+
         public string short_content()
         {
             String reference = search_term;

@@ -20,10 +20,8 @@ namespace PTProject.Controllers
            
             FakeDB db = new FakeDB();
             results = db.find( search_types, search_term);
-              
-
-             test_data = results;
-             ViewBag.results = results;
+            test_data = results;
+            ViewBag.results = results;
             return View();
         }
 
