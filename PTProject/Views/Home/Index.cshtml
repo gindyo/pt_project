@@ -10,22 +10,21 @@
         <br />
         <div id="container">
           <a href="javascript:void(0);" id="filters_a" data-state="0">use filters for advanced search...</a>
+          <br />
           <div id="filters">
             <div class="filter">
-                All <input type="checkbox" id="all" checked name="search_types" value="all"  />
+                <input type="checkbox" id="all" checked name="search_types" value="all"  /> All 
             </div >
-            <div class="filter">
-                Titles <input type="checkbox" id="titles" name="search_types" value="titles" class="search_types" />
-            </div>
-            <div class="filter">
-                Contents <input type="checkbox" id="contents" name="search_types" value="contents"  class="search_types"/>
-            </div>
-            <div class="filter">
-                Keywords <input type="checkbox" id="keywords" name="search_types" value="keywords"  class="search_types"/>
-            </div>
-            </div>
+            @{foreach( String type in ViewBag.search_types){
+                    <div class="filter">
+                        <input type="checkbox" id="@type" name="search_types" value="@type" class="search_types" /> @type.Replace('_',' ')
+                    </div>
+                }
+            }
+           </div>
+            
         </div>
-        <div class="clear"></div>
+        <br />
         <input type="submit" value=" Search " />
     </form>
 </div>

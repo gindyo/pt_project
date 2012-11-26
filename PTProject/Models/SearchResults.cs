@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using PTProject.AbstractClasses;
 
 namespace PTProject.Models
 {
@@ -35,7 +34,7 @@ namespace PTProject.Models
             links.Add(result.link);
             contents.Add(result.content);
             titles.Add(result.title);
-            keywords.Add(result.keywords);
+           
         }
     }
 }

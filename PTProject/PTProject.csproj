@@ -57,6 +57,9 @@
       <HintPath>..\packages\Nuget.Core.1.0.1120.104\lib\net40\NuGet.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\AspNetWebPages.Core.1.0.20105.407\lib\net40\System.Web.Helpers.dll</HintPath>
@@ -108,26 +111,36 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractClasses\Searchable.cs" />
+    <Compile Include="Controllers\CaseStudyController.cs" />
+    <Compile Include="Models\AccountModels.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\ICommentable.cs" />
-    <Compile Include="Interfaces\IStorage.cs" />
-    <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\CaseStudyModels.cs" />
-    <Compile Include="Interfaces\IReviewable.cs" />
-    <Compile Include="Models\CommunicatorModel.cs" />
-    <Compile Include="Models\InterventionModels.cs" />
-    <Compile Include="Models\FakeDB.cs" />
-    <Compile Include="Models\SearchResults.cs" />
-    <Compile Include="Models\UserModels.cs" />
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Unit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Searchable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewHelpers\UnitHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\PHT_DB.mdf" />
+    <Content Include="App_Data\PHT_DB_log.ldf">
+      <DependentUpon>PHT_DB.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap\css\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap\css\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap\css\bootstrap.css" />
@@ -176,7 +189,9 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
     <Content Include="Scripts\results\index.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -207,9 +222,12 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="AbstractClasses\" />
     <Folder Include="Content\css\home\" />
     <Folder Include="Content\css\results\" />
+    <Folder Include="DB\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Views\Unit\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -225,6 +243,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\ViewPage1.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -248,7 +280,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>61795</DevelopmentServerPort>
+          <DevelopmentServerPort>7441</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/PTProject</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

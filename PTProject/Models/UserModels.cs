@@ -2,23 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using PTProject.AbstractClasses;
 using PTProject.Interfaces;
 
 
 namespace PTProject.Models
 {
-    public class User
+    public partial class User
     {
-        public string first_name;
-        public string last_name;
-        public string email;
-        public string type;
-
-        public User()
-        {
-            type = this.GetType().Name;
-        }
 
     }
 
@@ -56,7 +46,7 @@ namespace PTProject.Models
         }
     }
 
-    public class MessageSender : CaseStudyCreator
+    public class MessageSender : User
     {
         public MessageSender(){}
     }

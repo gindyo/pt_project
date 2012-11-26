@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PTProject.Models;
 
 namespace PTProject.Controllers
 {
@@ -10,9 +11,17 @@ namespace PTProject.Controllers
     {
         public ActionResult Index()
         {
+
+            using (var db = new PT_DB())
+            {
+                var query = from s in db.Searchables
+                            select s.type.Distinct();
             
 
-            return View();
+                ViewBag.search_types = query.ToList();
+
+                return View();
+            }
         }
 
         public ActionResult About()

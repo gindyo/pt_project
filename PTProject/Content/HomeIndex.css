@@ -24,22 +24,24 @@ input[type="submit"] {
     
 }
 #container {
-    
-    height: 60px;
+    margin: 20px;
+   
 }
 
 #filters {
-    position: absolute;
+    position: relative;
     width: 500px;
     margin-left: 50%;
     left: -250px;
     display: none;
+    text-align: center;
+    padding: 20px;
      
 }
  .filter{
-     text-align: center;
+    text-align: left;
     float: left;
-    width: 120px;
+    width: 250px;
 }
   
 
