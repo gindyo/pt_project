@@ -1,0 +1,133 @@
+﻿@model PTProject.Models.User
+
+@{
+    ViewBag.Title = "Contributor Home Page";
+}
+
+<h2>'USERNAME' Home Page</h2>
+
+<form>
+    <button type="submit" value="Create_Casefile">Create New Casefile</button>
+    <button type="submit" value="Create_Intervention">Create New Intervention</button>
+</form>
+
+<h3>Submitted Case Files (work in progress)</h3>
+
+<form>
+    <table border="1">
+        <tr>
+            <th>Select</th>
+            <th>Casefile</th>
+            <th>Date Submitted</th>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="Casefile1" /></td>
+            <td>Casefile 1</td>
+            <td>1/2/2012</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="Casefile2" /></td>
+            <td>Casefile 2</td>
+            <td>2/3/2012</td>
+        </tr>
+                <tr>
+            <td><input type="checkbox" name="Casefile3" /></td>
+            <td>Casefile 3</td>
+            <td>3/4/2012</td>
+        </tr>
+</table>
+    <br />
+    <button type="submit" value="Pend_Casefile">Edit Casefile</button>
+    <br />
+</form>
+<br />
+
+<h3>Submitted Interventions (work in progress)</h3>
+
+<form>
+    <table border="1" >
+        <tr>
+            <th>Select</th>
+            <th>Intervention</th>
+            <th>Date Submitted</th>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="Intervention1" /></td>
+            <td>Intervention 1</td>
+            <td>1/2/2012</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="Intervention2" /></td>
+            <td>Intervention 2</td>
+            <td>2/3/2012</td>
+        </tr>
+                <tr>
+            <td><input type="checkbox" name="Intervention3" /></td>
+            <td>Intervention 3</td>
+            <td>3/4/2012</td>
+        </tr>
+</table>
+    <br />
+    <button type="submit" value="Pend_Intervention">Edit Intervention</button>
+    <br />
+</form>
+
+<h3>Accepted Submissions (posted to database) </h3>
+<form>
+    <table border="1">
+        <tr>
+            <th>Select</th>
+            <th>Casefile</th>
+            <th>Date Submitted</th>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="Casefile1" /></td>
+            <td>Casefile 1</td>
+            <td>1/2/2012</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="Casefile2" /></td>
+            <td>Casefile 2</td>
+            <td>2/3/2012</td>
+        </tr>
+                <tr>
+            <td><input type="checkbox" name="Casefile3" /></td>
+            <td>Casefile 3</td>
+            <td>3/4/2012</td>
+        </tr>
+</table>
+    <br />
+    <button type="submit" value="Pend_Casefile">View Case File</button>
+    <br />
+</form>
+<br />
+
+<h3>Accepted Interventions (posted to database)</h3>
+
+<form>
+    <table border="1" >
+        <tr>
+            <th>Select</th>
+            <th>Intervention</th>
+            <th>Date Submitted</th>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="Intervention1" /></td>
+            <td>Intervention 1</td>
+            <td>1/2/2012</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="Intervention2" /></td>
+            <td>Intervention 2</td>
+            <td>2/3/2012</td>
+        </tr>
+                <tr>
+            <td><input type="checkbox" name="Intervention3" /></td>
+            <td>Intervention 3</td>
+            <td>3/4/2012</td>
+        </tr>
+</table>
+    <br />
+    <button type="submit" value="Pend_Intervention">View Intervention</button>
+    <br />
+</form>

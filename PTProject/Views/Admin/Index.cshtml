@@ -1,0 +1,30 @@
+﻿@model PTProject.Models.Instructor
+
+@{
+    ViewBag.Title = "Admin";
+}
+
+<h2>Administrative Page</h2>
+
+<h4>Pending Case Files Needing Approval</h4>
+<form>
+    <p>There are '#' casefiles needing approval</p>
+    <input type="button" value="Case Files" onclick="window.location.href='/Admin/PendingCasefiles'" />
+</form>
+
+<h4>Pending Interventions Needing Approval</h4>
+<form>
+    <p>There are '#' Interventions needing approval</p>
+    <input type="button" value="Interventions" onclick="window.location.href='/Admin/PendingInterventions'" />
+</form>
+
+<h4>Pending Account Requests Needing Approval</h4>
+<form>
+    <p>There are '#'Accounts needing approval</p>
+    <input type="button" value="Accounts" onclick="window.location.href='/Admin/PendingAccounts'" />
+</form>
+
+<h4>Update Existing Accounts</h4>
+<form>
+    <input type="button" value="Accounts" onclick="window.location.href='/Admin/UpdateAccounts'" />
+</form>
