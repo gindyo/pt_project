@@ -13,6 +13,37 @@ namespace PTProject.Tests.Models
     [TestClass]
     public class SearchableTest
     {
+        Searchable s1;
+        Searchable s2;
+        Searchable s3;
+        Searchable s4;
+        Searchable s5;
+
+        [TestInitialize]
+        public void initialize()
+        {
+            s1 = SearchableFactory.create(0, "", "patient_history", "this is a tes dfasasdfasfsarchable");
+            s2 = SearchableFactory.create(0, "", "social_history", "this is a tes dfasasdfasfsarchable");
+            s3 = SearchableFactory.create(0, "", "social_history", "this is a tes dimitar");
+            s4 = SearchableFactory.create(0, "", "patient_history", "this is a tes dimitar");
+            s5 = SearchableFactory.create(0, "", "patient_history", "this is a tes dfasasdfasfsarchable");
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            if (s1 != null)
+                s1.destroy();
+            if (s2 != null)
+                s2.destroy();
+            if (s3 != null)
+                s3.destroy();
+            if (s4 != null)
+                s4.destroy();
+            if (s5 != null)
+                s5.destroy();
+        }
+       
         [TestMethod]
         public void searchable_factory_works()
         {
@@ -42,19 +73,17 @@ namespace PTProject.Tests.Models
         [TestMethod]
         public void searchable_find_in_patient_history()
         {
-            Searchable s1 = SearchableFactory.create(0, "", "patient_history", "this is a tes dfasasdfasfsarchable");
-            Searchable s2 = SearchableFactory.create(0, "", "social_history", "this is a tes dfasasdfasfsarchable");
-            Searchable s3 = SearchableFactory.create(0, "", "social_history", "this is a tes dfasasdfasfsarchable");
-            Searchable s4 = SearchableFactory.create(0, "", "patient_history", "this is a tes dfasasdfasfsarchable");
-            Searchable s5 = SearchableFactory.create(0, "", "patient_history", "this is a tes dfasasdfasfsarchable");
+            var found_s = Searchable.find(new[]{"patient_history"}, "dimitar").Count();
+            Assert.AreEqual(1,found_s);
+            
+        }
 
-            var found_s = Searchable.find(new[]{"patient_history"}, "dfasasdfasfsarchable").Count();
-            Assert.AreEqual(3,found_s);
-            s1.destroy();
-            s2.destroy();
-            s3.destroy();
-            s4.destroy();
-            s5.destroy();
+        [TestMethod]
+        public void searchable_find_in_all()
+        {
+            var found_s = Searchable.find(null, "dimitar").Count();
+            Assert.AreEqual(2, found_s);
+
         }
 
         [TestMethod]
@@ -62,7 +91,7 @@ namespace PTProject.Tests.Models
         {
             var content = "this is a tes dfasasdfasfsarchable";
             Searchable s = SearchableFactory.create(0, "", "", content );
-            var found_s = Searchable.find_in_content("dfasasdfasfsarchable");
+            var found_s = Searchable.find(null,"dfasasdfasfsarchable");
             Assert.AreEqual("dfasasdfasfsarchable", found_s.ToList().Last().search_term);
             s.destroy();
 

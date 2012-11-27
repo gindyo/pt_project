@@ -19,8 +19,8 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("Models", "FK_unitsearchable", "Unit", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PTProject.Models.Unit), "Searchables", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PTProject.Models.Searchable), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_usersunit", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PTProject.Models.User), "Unit", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PTProject.Models.Unit), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_parentsearchable", "Unit", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PTProject.Models.Unit), "Searchable", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PTProject.Models.Searchable), true)]
 
 #endregion
 
@@ -322,16 +322,16 @@ namespace PTProject.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_unitsearchable", "Unit")]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_parentsearchable", "Unit")]
         public Unit Unit
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Unit>("Models.FK_unitsearchable", "Unit").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Unit>("Models.FK_parentsearchable", "Unit").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Unit>("Models.FK_unitsearchable", "Unit").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Unit>("Models.FK_parentsearchable", "Unit").Value = value;
             }
         }
         /// <summary>
@@ -343,13 +343,13 @@ namespace PTProject.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Unit>("Models.FK_unitsearchable", "Unit");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Unit>("Models.FK_parentsearchable", "Unit");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Unit>("Models.FK_unitsearchable", "Unit", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Unit>("Models.FK_parentsearchable", "Unit", value);
                 }
             }
         }
@@ -594,28 +594,6 @@ namespace PTProject.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_unitsearchable", "Searchables")]
-        public EntityCollection<Searchable> Searchables
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Searchable>("Models.FK_unitsearchable", "Searchables");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Searchable>("Models.FK_unitsearchable", "Searchables", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Models", "FK_usersunit", "Users")]
         public User User
         {
@@ -644,6 +622,28 @@ namespace PTProject.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("Models.FK_usersunit", "Users", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_parentsearchable", "Searchable")]
+        public EntityCollection<Searchable> Searchables
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Searchable>("Models.FK_parentsearchable", "Searchable");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Searchable>("Models.FK_parentsearchable", "Searchable", value);
                 }
             }
         }

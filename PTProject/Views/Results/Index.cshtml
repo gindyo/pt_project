@@ -13,14 +13,6 @@
 </div>
 
 <div id="results_content">
-@{foreach(PTProject.Models.Searchable el in ViewBag.results)
-  {
-    <p class ="">
-        <a><em>@ViewBag.Parents.find_by_id(@el.parent_id).title</em></a><br />
-        @Html.Raw(el.short_content(ViewBag.search_term))
-    </p>
-  }
-        
-}
+@Model.print()
 
 </div>

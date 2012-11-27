@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PTProject.Models;
+using PTProject.ViewHelpers;
 
 namespace PTProject.Controllers
 {
@@ -22,8 +23,8 @@ namespace PTProject.Controllers
               
                 test_data = results;
                 ViewBag.search_term = search_term;
-                ViewBag.results = results;
-                return View();
+                
+                return View(new ResultsHelper(results));
             }
         }
 

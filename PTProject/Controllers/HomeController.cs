@@ -12,16 +12,12 @@ namespace PTProject.Controllers
         public ActionResult Index()
         {
 
-            using (var db = new PT_DB())
-            {
-                var query = from s in db.Searchables
-                            select s.type.Distinct();
-            
-
-                ViewBag.search_types = query.ToList();
-
-                return View();
-            }
+            var db = new PT_DB();
+            var query = from s in db.Searchables
+                        group s by s.type into uniqueTypes
+                        select uniqueTypes.FirstOrDefault().type;
+            ViewBag.search_types = query.ToList();
+            return View();
         }
 
         public ActionResult About()

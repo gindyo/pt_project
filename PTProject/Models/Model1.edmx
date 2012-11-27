@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="ModelsStoreContainer">
           <EntitySet Name="Searchables" EntityType="Models.Store.Searchables" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Unit" EntityType="Models.Store.Unit" store:Type="Tables" Schema="dbo" />
@@ -26,7 +26,7 @@
           <Property Name="content" Type="nvarchar(max)" Nullable="false" />
           <Property Name="type" Type="nvarchar(max)" Nullable="false" />
           <Property Name="title" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="parentId" Type="int" Nullable="false" />
+          <Property Name="unitId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
@@ -62,7 +62,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Searchables">
-              <PropertyRef Name="parentId" />
+              <PropertyRef Name="unitId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -78,8 +78,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Models" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -87,13 +86,13 @@
           <EntitySet Name="Searchables" EntityType="Models.Searchable" />
           <EntitySet Name="Units" EntityType="Models.Unit" />
           <EntitySet Name="Users" EntityType="Models.User" />
-          <AssociationSet Name="FK_unitsearchable" Association="Models.FK_unitsearchable">
-            <End Role="Unit" EntitySet="Units" />
-            <End Role="Searchables" EntitySet="Searchables" />
-          </AssociationSet>
           <AssociationSet Name="FK_usersunit" Association="Models.FK_usersunit">
             <End Role="Users" EntitySet="Users" />
             <End Role="Unit" EntitySet="Units" />
+          </AssociationSet>
+          <AssociationSet Name="FK_parentsearchable" Association="Models.FK_parentsearchable">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="Searchable" EntitySet="Searchables" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Searchable">
@@ -104,8 +103,8 @@
           <Property Name="content" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="type" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="title" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="unitId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Unit" Relationship="Models.FK_unitsearchable" FromRole="Searchables" ToRole="Unit" />
+          <Property Type="Int32" Name="unitId" Nullable="false" />
+          <NavigationProperty Name="Unit" Relationship="Models.FK_parentsearchable" FromRole="Searchable" ToRole="Unit" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
@@ -119,8 +118,8 @@
           <Property Name="approved" Type="Boolean" />
           <Property Name="usersId" Type="Int32" Nullable="false" />
           <Property Name="can_be_searched" Type="Boolean" />
-          <NavigationProperty Name="Searchables" Relationship="Models.FK_unitsearchable" FromRole="Unit" ToRole="Searchables" />
           <NavigationProperty Name="User" Relationship="Models.FK_usersunit" FromRole="Unit" ToRole="Users" />
+          <NavigationProperty Name="Searchables" Relationship="Models.FK_parentsearchable" FromRole="Unit" ToRole="Searchable" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -136,18 +135,6 @@
           <Property Name="alt_id" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Units" Relationship="Models.FK_usersunit" FromRole="Users" ToRole="Unit" />
         </EntityType>
-        <Association Name="FK_unitsearchable">
-          <End Role="Unit" Type="Models.Unit" Multiplicity="1" />
-          <End Role="Searchables" Type="Models.Searchable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unit">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Searchables">
-              <PropertyRef Name="unitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_usersunit">
           <End Role="Users" Type="Models.User" Multiplicity="1" />
           <End Role="Unit" Type="Models.Unit" Multiplicity="*" />
@@ -160,6 +147,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_parentsearchable">
+          <End Type="Models.Unit" Role="Unit" Multiplicity="1" />
+          <End Type="Models.Searchable" Role="Searchable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Searchable">
+              <PropertyRef Name="unitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -169,11 +168,11 @@
           <EntitySetMapping Name="Searchables">
             <EntityTypeMapping TypeName="Models.Searchable">
               <MappingFragment StoreEntitySet="Searchables">
+                <ScalarProperty Name="unitId" ColumnName="unitId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="content" ColumnName="content" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="unitId" ColumnName="parentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
