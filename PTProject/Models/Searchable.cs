@@ -46,16 +46,23 @@ namespace PTProject.Models
 
         public static Searchable find(int id)
         {
-            using (var db = new PT_DB())
-            {
+                var db = new PT_DB();
+           
                 var query = (from s in db.Searchables
                              where s.Id == id
                              select s).SingleOrDefault();
                 Searchable result = new Searchable();
                 result = query;
                 return result;
-            }
+            
         }
+
+        public static List<Searchable> find(string[] where_to_search, string search_term)
+        {
+            return (where_to_search == null) ? search_all(search_term) : search_specific_types(where_to_search, search_term);
+
+        }
+
 
         public static void destroy(int id)
         {
@@ -85,40 +92,35 @@ namespace PTProject.Models
             }
         }
 
-        public static List<Searchable> find(string[] where_to_search, string search_term)
-        {
-            return (where_to_search == null) ? search_all(search_term) : search_specific_types(where_to_search, search_term);
-                   
-        }
-
+        
        
 
         private static List<Searchable> search_all(string search_term)
         {
             IQueryable<Searchable> query;
             List<Searchable> l;
-            using (var db = new PT_DB())
-            {
+                var db = new PT_DB();
+         
                 query = (from s in db.Searchables
                              where s.content.Contains(search_term)
                              select s);
                  query.ToList().ForEach(s => s.search_term = search_term);
                  l = query.ToList();
-            }
+            
             return l;
         }
 
         private static List<Searchable> search_specific_types(string[] where_to_search, string search_term)
         {
             List<Searchable> result;
-            using (var db = new PT_DB())
-            {
+                var db = new PT_DB();
+            
                 IQueryable<Searchable> query = (from s in db.Searchables
                          where where_to_search.Contains(s.type) && s.content.Contains(search_term)
                          select s);
                 query.ToList().ForEach(s => s.search_term = search_term);
                 result = query.ToList();
-            }
+            
             return result;
         }
 

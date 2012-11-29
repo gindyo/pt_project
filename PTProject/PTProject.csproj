@@ -299,7 +299,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>7441</DevelopmentServerPort>
+          <DevelopmentServerPort>15241</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/PTProject</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
