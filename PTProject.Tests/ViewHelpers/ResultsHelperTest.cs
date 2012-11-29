@@ -17,18 +17,19 @@ namespace PTProject.Tests.ViewHelpers
         Searchable s3;
         Searchable s4;
         Searchable s5;
+        Searcher searcher;
 
         [TestInitialize]
         public void initialize()
         {
-
+            searcher = new Searcher(new PT_DB());
             s1 = SearchableFactory.create(0, "", "patient_history", "this is a test value fdsfasd test value fdsfasdfgsgr fgsgr tes dfasasdfasfsarchable");
             s2 = SearchableFactory.create(0, "", "social_history", "this is a tes dfasa test value fdsfasdfgsgr sdfasfsarchable");
             s3 = SearchableFactory.create(0, "", "social_history", "this test value f test value fdsfasdfgsgr dsfasdfgsgr");
             s4 = SearchableFactory.create(0, "", "patient_ history", "this is a t test value fdsfasdfgsgres dfasasdfasfsarchable");
             s5 = SearchableFactory.create(0, "", "patient_history", "this is a t test value fdsfasdfgsgr es dfasasdfasfsarchable");
             
-            helper = new ResultsHelper(Searchable.find(new[]{"patient_history", "social_history"}, "test value fdsfasdfgsgr"));
+            helper = new ResultsHelper(searcher.find(new[]{"patient_history", "social_history"}, "test value fdsfasdfgsgr"));
         }
 
         [TestCleanup]

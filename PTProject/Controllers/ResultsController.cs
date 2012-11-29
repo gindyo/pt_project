@@ -13,22 +13,28 @@ namespace PTProject.Controllers
         
         //
         // GET: /Results/
+        private PT_DB db = new PT_DB();
 
         public ActionResult Index(String[] search_types, String search_term)
         {
-            using (var db = new PT_DB())
-            {
+            Searcher searcher = new Searcher(db);
 
-                var results = Searchable.find(search_types, search_term);
+                var results = searcher.find(search_types, search_term);
               
                 test_data = results;
                 ViewBag.search_term = search_term;
                 
                 return View(new ResultsHelper(results));
-            }
+            
         }
 
         public List<Searchable> test_data {get; set;}
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
+        }
 
     }
 }

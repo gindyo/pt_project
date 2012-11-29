@@ -18,15 +18,19 @@ namespace PTProject.Tests.Models
         Searchable s3;
         Searchable s4;
         Searchable s5;
+        Searcher searcher;
+        PT_DB db;
 
         [TestInitialize]
-        public void initialize()
+        public void Initialize()
         {
             s1 = SearchableFactory.create(0, "", "patient_history", "this is a tes dfasasdfasfsarchable");
             s2 = SearchableFactory.create(0, "", "social_history", "this is a tes dfasasdfasfsarchable");
             s3 = SearchableFactory.create(0, "", "social_history", "this is a tes dimitar");
             s4 = SearchableFactory.create(0, "", "patient_history", "this is a tes dimitar");
             s5 = SearchableFactory.create(0, "", "patient_history", "this is a tes dfasasdfasfsarchable");
+            db = new PT_DB();
+            searcher = new Searcher(db);
         }
 
         [TestCleanup]
@@ -42,6 +46,8 @@ namespace PTProject.Tests.Models
                 s4.destroy();
             if (s5 != null)
                 s5.destroy();
+            db.Dispose();
+
         }
        
         [TestMethod]
@@ -63,7 +69,7 @@ namespace PTProject.Tests.Models
         {
             Searchable s = SearchableFactory.create(0, "", "", "this is a test seagaergaschable");
             s.destroy();
-            Assert.IsNull(Searchable.find(s.Id));
+            Assert.IsNull(searcher.find(s.Id));
 
         }
 
@@ -73,7 +79,7 @@ namespace PTProject.Tests.Models
         [TestMethod]
         public void searchable_find_in_patient_history()
         {
-            var found_s = Searchable.find(new[]{"patient_history"}, "dimitar").Count();
+            var found_s = searcher.find(new[]{"patient_history"}, "dimitar").Count();
             Assert.AreEqual(1,found_s);
             
         }
@@ -81,7 +87,7 @@ namespace PTProject.Tests.Models
         [TestMethod]
         public void searchable_find_in_all()
         {
-            var found_s = Searchable.find(null, "dimitar").Count();
+            var found_s = searcher.find(null, "dimitar").Count();
             Assert.AreEqual(2, found_s);
 
         }
@@ -91,7 +97,7 @@ namespace PTProject.Tests.Models
         {
             var content = "this is a tes dfasasdfasfsarchable";
             Searchable s = SearchableFactory.create(0, "", "", content );
-            var found_s = Searchable.find(null,"dfasasdfasfsarchable");
+            var found_s = searcher.find(null,"dfasasdfasfsarchable");
             Assert.AreEqual("dfasasdfasfsarchable", found_s.ToList().Last().search_term);
             s.destroy();
 
@@ -101,7 +107,7 @@ namespace PTProject.Tests.Models
         public void find_searchable_by_id()
         {
             Searchable new_s = SearchableFactory.create();
-            Assert.IsNotNull(Searchable.find(new_s.Id));
+            Assert.IsNotNull(searcher.find(new_s.Id));
             new_s.destroy();
         }
 

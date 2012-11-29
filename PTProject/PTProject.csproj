@@ -112,6 +112,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\UnitController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="ModelMetadata\UnitMeta.cs" />
     <Compile Include="Models\AccountModels.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -128,6 +130,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EFModels.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Searcher.cs" />
     <Compile Include="Models\Unit.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -136,6 +139,7 @@
     </Compile>
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewHelpers\DropDowns.cs" />
     <Compile Include="ViewHelpers\ResultsHelper.cs" />
     <Compile Include="ViewHelpers\UnitHelper.cs" />
   </ItemGroup>
@@ -276,6 +280,11 @@
     <None Include="Models\EFModels.edmx.diagram">
       <DependentUpon>EFModels.edmx</DependentUpon>
     </None>
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

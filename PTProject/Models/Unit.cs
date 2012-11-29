@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
-
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+using PTProject.ModelMetadata;
 
 
 namespace PTProject.Models{
+    
+    [MetadataType(typeof(UnitMeta))]
     public partial class Unit
     {
+           
+
         public static Unit find(int id)
         {
             var db = new PT_DB();
