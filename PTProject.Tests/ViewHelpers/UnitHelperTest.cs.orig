@@ -1,0 +1,66 @@
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+<<<<<<< HEAD
+<<<<<<< HEAD
+using System.Collections.Generic;
+using System.Web;
+using System.Web.Mvc;
+using PTProject.Models;
+using PTProject.Tests.Models;
+using PTProject.ViewHelpers;
+
+=======
+using System.Linq;
+using System.Collections.Generic;
+using System.Web.Mvc;
+using PTProject.ViewHelpers;
+using PTProject.Models;
+using PTProject.Tests.Models;
+>>>>>>> ad9652e2716fca389c63657f3f3c91a8ce82c6a5
+=======
+using System.Linq;
+using System.Collections.Generic;
+using System.Web.Mvc;
+using PTProject.ViewHelpers;
+using PTProject.Models;
+using PTProject.Tests.Models;
+>>>>>>> origin/dimitar
+
+namespace PTProject.Tests.ViewHelpers
+{
+    [TestClass]
+    public class UnitHelperTest
+    {
+        
+
+        [TestMethod]
+        public void print()
+        {
+            var unit = UnitFactory.create();
+            var s1 = SearchableFactory.create(unit.Id);
+            var s2 = SearchableFactory.create(unit.Id, "", "social_history", "the content of this social history");
+            var s3 = SearchableFactory.create(unit.Id, "", "family_history", "the content of this family history");
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+            var result = Searchable.find(new[] { "social_history", "family_history" }, "family");
+            
+            var unit_found = result[0].Unit;
+            var uh = new UnitHelper(unit_found);
+
+
+            Assert.AreEqual("Social history", uh.titles[0].InnerHtml);          
+
+=======
+            UnitHelper uh = new UnitHelper(unit);
+            MvcHtmlString unit_html = uh.print();
+>>>>>>> ad9652e2716fca389c63657f3f3c91a8ce82c6a5
+=======
+            UnitHelper uh = new UnitHelper(unit);
+            MvcHtmlString unit_html = uh.print();
+>>>>>>> origin/dimitar
+
+            Assert.IsTrue(unit_html.ToString().Contains("social") && !unit_html.ToString().Contains("scial"));
+        }
+    }
+}

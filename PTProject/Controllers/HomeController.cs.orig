@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using PTProject.Models;
+
+namespace PTProject.Controllers
+{
+    public class HomeController : Controller
+    {
+        private PT_DB db = new PT_DB();
+
+        public ActionResult Index()
+        {
+<<<<<<< HEAD
+            var query = from s in db.Searchables
+                        select s.type;
+            ViewBag.search_types = query.ToList().Distinct();
+            return View();
+           
+=======
+
+            var db = new PT_DB();
+            var query = from s in db.Searchables
+                        group s by s.type into uniqueTypes
+                        select uniqueTypes.FirstOrDefault().type;
+            ViewBag.search_types = query.ToList();
+            return View();
+<<<<<<< HEAD
+>>>>>>> ad9652e2716fca389c63657f3f3c91a8ce82c6a5
+=======
+>>>>>>> origin/dimitar
+        }
+
+        public ActionResult About()
+        {
+            return View();
+        }
+    }
+}

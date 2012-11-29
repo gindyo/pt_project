@@ -97,14 +97,14 @@ namespace PTProject.Models
         {
             IQueryable<Searchable> query;
             List<Searchable> l;
-            using (var db = new PT_DB())
-            {
+            var db = new PT_DB();
+            
                 query = (from s in db.Searchables
                              where s.content.Contains(search_term)
                              select s);
                  query.ToList().ForEach(s => s.search_term = search_term);
                  l = query.ToList();
-            }
+            
             return l;
         }
 

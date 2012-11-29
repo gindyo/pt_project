@@ -22,7 +22,7 @@ namespace PTProject.ViewHelpers
         public MvcHtmlString print()
         {
             MvcHtmlString resulting_string = new MvcHtmlString("");
-
+            StringBuilder stringbuilder = new StringBuilder();
            foreach( Searchable el in _searchables)
            {
                
@@ -38,7 +38,7 @@ namespace PTProject.ViewHelpers
 
                short_content.InnerHtml =  el.short_content().Replace(el.search_term, bold_s_term.ToString());
 
-               a_result_div.InnerHtml = new StringBuilder(link.ToString()).Append(short_content.ToString()).ToString();
+               a_result_div.InnerHtml = stringbuilder.Append(link.ToString()).Append(short_content.ToString()).ToString();
 
                resulting_string = new MvcHtmlString(a_result_div.ToString());
            }

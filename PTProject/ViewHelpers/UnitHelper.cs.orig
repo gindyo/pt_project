@@ -1,0 +1,102 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Text;
+using PTProject.Models;
+
+namespace PTProject.ViewHelpers
+{
+    public class UnitHelper
+    {
+<<<<<<< HEAD
+<<<<<<< HEAD
+        public List<TagBuilder> searchables{ get; set; }
+        public List<TagBuilder> titles { get; set; }
+        public Unit unit { get; set; }
+
+
+        public UnitHelper(Unit u)
+        {
+            unit = u;
+        }
+
+        public MvcHtmlString print(){
+            var unit_div = new TagBuilder("div");
+            unit_div.Attributes["class"] = unit.type;
+            
+            string searchables = "";
+            unit.Searchables.ToList().ForEach(s=>
+=======
+        public Unit unit { get; set; }
+        
+
+        public UnitHelper(Unit unit)
+        {
+            this.unit = unit;
+           
+        }
+
+
+        public MvcHtmlString print(){
+            var unit_div = new TagBuilder("div");
+=======
+        public Unit unit { get; set; }
+        
+
+        public UnitHelper(Unit unit)
+        {
+            this.unit = unit;
+           
+        }
+
+
+        public MvcHtmlString print(){
+            var unit_div = new TagBuilder("div");
+>>>>>>> origin/dimitar
+            StringBuilder cls = new StringBuilder(unit.type);
+            unit_div.Attributes["class"] = cls.Append(" unit").ToString();
+
+            StringBuilder searchables_string = new StringBuilder();
+            
+            unit.Searchables.ToList().ForEach(delegate(Searchable s)
+>>>>>>> ad9652e2716fca389c63657f3f3c91a8ce82c6a5
+            {
+
+                var searchable_div = new TagBuilder("div");
+                this.searchables.Add(searchable_div);
+                searchable_div.Attributes["id"] = s.type;
+                searchable_div.Attributes["class"] = "searchable";
+
+                var searchable_div_title = new TagBuilder("h3");
+                this.titles.Add(searchable_div_title);
+
+                searchable_div_title.Attributes["class"] = "s_titles";
+                searchable_div_title.SetInnerText(s.pretty_type());
+<<<<<<< HEAD
+<<<<<<< HEAD
+             
+                searchable_div.InnerHtml = searchable_div_title.ToString(TagRenderMode.SelfClosing) + s.content;
+=======
+                             
+                searchable_div.InnerHtml = searchable_div_title.ToString() + s.content;
+                
+>>>>>>> ad9652e2716fca389c63657f3f3c91a8ce82c6a5
+                
+=======
+                             
+                searchable_div.InnerHtml = searchable_div_title.ToString() + s.content;
+                
+                
+>>>>>>> origin/dimitar
+                searchables_string.Append(searchable_div.ToString());
+
+               
+            });
+
+            unit_div.InnerHtml = searchables_string.ToString();
+            return MvcHtmlString.Create(unit_div.ToString());
+        }
+    }
+}
