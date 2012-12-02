@@ -9,14 +9,12 @@ namespace PTProject.Controllers
 {
     public class HomeController : Controller
     {
+
+        private PT_DB db = new PT_DB();
         public ActionResult Index()
         {
-
-            var db = new PT_DB();
-            var query = from s in db.Searchables
-                        group s by s.type into uniqueTypes
-                        select uniqueTypes.FirstOrDefault().type;
-            ViewBag.search_types = query.ToList();
+            
+            ViewBag.search_types = Searchable.unique_types();
             return View();
         }
 
@@ -24,5 +22,13 @@ namespace PTProject.Controllers
         {
             return View();
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
+        }
+
+        
     }
 }

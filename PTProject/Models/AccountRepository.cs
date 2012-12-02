@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace PTProject.Interfaces
+namespace PTProject.Models
 {
-    public interface IReviewable
+    public class AccountRepository
     {
-
     }
 }

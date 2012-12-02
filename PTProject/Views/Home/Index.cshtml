@@ -15,16 +15,12 @@
             <div class="filter">
                 <input type="checkbox" id="all" checked name="search_types_all" value="all"  /> All 
             </div >
-            @{foreach( String type in ViewBag.search_types){
-                    <div class="filter">
-                        <input type="checkbox" id="@type" name="search_types" value="@type" class="search_types" /> @type.Replace('_',' ')
-                    </div>
-                }
-            }
+            @HomeHelper.type_checkboxes()
+            <div class="clear"></div>
            </div>
             
         </div>
-        <br />
+        
         <input type="submit" value=" Search " />
     </form>
 </div>

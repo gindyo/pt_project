@@ -12,7 +12,7 @@ namespace PTProject.Controllers
     public class UnitController : Controller
     {
         //
-        // GET: /CaseStudy/
+        // GET: /Unit/
 
         public ActionResult Index()
         {
@@ -21,7 +21,7 @@ namespace PTProject.Controllers
         }
 
         //
-        // GET: /CaseStudy/Details/5
+        // GET: /Unit/Details/5
 
         public ActionResult Details(int id)
         {
@@ -32,17 +32,18 @@ namespace PTProject.Controllers
 
             return View(unit_helper);
         }
-
+       
         //
-        // GET: /CaseStudy/Create
+        // GET: /Unit/Create
 
         public ActionResult Create()
         {
+            //ViewBag.user = 
             return View();
         } 
 
         //
-        // POST: /CaseStudy/Create
+        // POST: /Unit/Create
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -68,7 +69,7 @@ namespace PTProject.Controllers
         }
         
         //
-        // GET: /CaseStudy/Edit/5
+        // GET: /Unit/Edit/5
  
         public ActionResult Edit(int id)
         {
@@ -76,7 +77,7 @@ namespace PTProject.Controllers
         }
 
         //
-        // POST: /CaseStudy/Edit/5
+        // POST: /Unit/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -94,7 +95,7 @@ namespace PTProject.Controllers
         }
 
         //
-        // GET: /CaseStudy/Delete/5
+        // GET: /Unit/Delete/5
  
         public ActionResult Delete(int id)
         {
@@ -102,7 +103,7 @@ namespace PTProject.Controllers
         }
 
         //
-        // POST: /CaseStudy/Delete/5
+        // POST: /Unit/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)

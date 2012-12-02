@@ -16,13 +16,7 @@ namespace PTProject.Models
 
         public Searchable find(int id)
         {
-            var query = (from s in db.Searchables
-                         where s.Id == id
-                         select s).SingleOrDefault();
-            Searchable result = new Searchable();
-            result = query;
-            return result;
-
+           return db.Searchables.Where(s => s.Id == id).Single();
         }
 
         public List<Searchable> find(string[] where_to_search, string search_term)

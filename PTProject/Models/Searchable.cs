@@ -32,7 +32,6 @@ namespace PTProject.Models
             }
         }
 
-        
         public string pretty_type()
         {
             string pty_type = "";
@@ -44,7 +43,17 @@ namespace PTProject.Models
             return pty_type;
         }
 
-       
+        public static List<Searchable> unique_types()
+        {
+            using (PT_DB db = new PT_DB())
+            {
+                var types = from u in db.Searchables
+                            group u by u.type into unique_types
+                            select unique_types.FirstOrDefault();
+                return types.ToList();
+            }
+           
+        }
 
         public static void destroy(int id)
         {

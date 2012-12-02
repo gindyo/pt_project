@@ -46,8 +46,7 @@ namespace PTProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Users.AddObject(user);
-                db.SaveChanges();
+                Models.User.insert(user);
                 return RedirectToAction("Index");  
             }
 

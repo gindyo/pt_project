@@ -64,6 +64,7 @@
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="ViewHelpers\UnitHelperTest.cs" />
     <Compile Include="ViewHelpers\ResultsHelperTest.cs" />
+    <Compile Include="ViewHelpers\UserHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config">

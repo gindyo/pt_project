@@ -17,25 +17,17 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.title)
         </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.type)
-        </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.type)
-            @Html.ValidationMessageFor(model => model.type)
-        </div>
-
-        <div class="editor-field">
-            @Html.DropDownListFor(model => model.title)
+            @Html.EditorFor(model => model.title)
             @Html.ValidationMessageFor(model => model.title)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.unit_id)
+            @Html.LabelFor(model => model.type)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.unit_id)
-            @Html.ValidationMessageFor(model => model.unit_id)
+            @UnitHelper.type_selector()
+            @Html.ValidationMessageFor(model => model.type)
         </div>
 
         <div class="editor-label">
@@ -52,14 +44,6 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.approved)
             @Html.ValidationMessageFor(model => model.approved)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.usersId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.usersId)
-            @Html.ValidationMessageFor(model => model.usersId)
         </div>
 
         <div class="editor-label">

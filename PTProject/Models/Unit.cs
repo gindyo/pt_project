@@ -46,7 +46,16 @@ namespace PTProject.Models{
                 context.SaveChanges();
             }
         }
-
+        public string pretty_type()
+        {
+            string pty_type = "";
+            if (this.type.Count() > 0)
+            {
+                string no_ = this.type.Replace('_', ' ');
+                pty_type = char.ToUpper(no_[0]) + no_.Substring(1);
+            }
+            return pty_type;
+        }
          
       
     }

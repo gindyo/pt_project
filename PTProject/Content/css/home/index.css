@@ -1,4 +1,4 @@
-﻿#search_box {
+﻿#search_box{
     text-align: center;
      width: 100%;
      float: left;
@@ -35,7 +35,7 @@ input[type="submit"] {
     left: -250px;
     display: none;
     text-align: center;
-    padding: 20px;
+    
      
 }
  .filter{
@@ -43,10 +43,19 @@ input[type="submit"] {
     float: left;
     width: 250px;
 }
-  
 
- input#filters{
-   clear: none;
+
+input#search_term {
+    
+    width: 400px;
 }
+
+input[type=checkbox].search_types{
+     margin-right: 4px;
+     margin-bottom: 2px;
+    
+}
+ 
+ 
 
 

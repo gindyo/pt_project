@@ -5,12 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using PTProject.Models;
 
-namespace PTProject.Interfaces
+namespace PTProject.Tests.ViewHelpers
 {
-    public interface ICommentable
+    class UserHelper
     {
-        void receive_comment(Commenter commenter);
-
-
+       
     }
 }
