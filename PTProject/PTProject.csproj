@@ -52,6 +52,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="NuGet.Core, Version=1.0.11220.104, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Nuget.Core.1.0.1120.104\lib\net40\NuGet.Core.dll</HintPath>
@@ -111,27 +114,32 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\ControllersSetup.cs" />
-    <Compile Include="Controllers\UnitController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="ModelMetadata\UnitMeta.cs" />
-    <Compile Include="Models\AccountModels.cs">
+    <Content Include="App_Code\AccountMembershipProvider.cs" />
+    <Compile Include="Controllers\AccountController.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ContributorController.cs" />
+    <Compile Include="Controllers\ControllersSetup.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
+    <Compile Include="Controllers\UnitController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="ModelMetadata\UserMeta.cs" />
+    <Compile Include="ModelMetadata\UnitMeta.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\AccountRepository.cs" />
     <Compile Include="Models\EFModels1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EFModels.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\IAccountRepository.cs" />
     <Compile Include="Models\Searcher.cs" />
+    <Compile Include="Models\Security\PasswordHash.cs" />
     <Compile Include="Models\Unit.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -145,6 +153,11 @@
     <Compile Include="ViewHelpers\UnitHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ASPNETDB.MDF" />
+    <Content Include="App_Data\aspnetdb_log.ldf">
+      <DependentUpon>ASPNETDB.MDF</DependentUpon>
+    </Content>
+    <Content Include="App_Data\ldf\PHT_DB_log.ldf" />
     <Content Include="App_Data\PHT_DB.mdf" />
     <Content Include="App_Data\PHT_DB_log.ldf">
       <DependentUpon>PHT_DB.mdf</DependentUpon>
@@ -309,7 +322,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>15241</DevelopmentServerPort>
+          <DevelopmentServerPort>18720</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/PTProject</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="Models.Searchable" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Models.Unit" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Models.User" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <AssociationConnector Association="Models.FK_usersunit" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="false" Association="Models.FK_usersunit" />
         <AssociationConnector Association="Models.FK_parentsearchable" />
       </Diagram>
     </edmx:Diagrams>

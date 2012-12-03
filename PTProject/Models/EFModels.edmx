@@ -87,8 +87,8 @@
           <EntitySet Name="Units" EntityType="Models.Unit" />
           <EntitySet Name="Users" EntityType="Models.User" />
           <AssociationSet Name="FK_usersunit" Association="Models.FK_usersunit">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Unit" EntitySet="Units" />
+            <End EntitySet="Users" Role="Users" />
+            <End EntitySet="Units" Role="Unit" />
           </AssociationSet>
           <AssociationSet Name="FK_parentsearchable" Association="Models.FK_parentsearchable">
             <End Role="Unit" EntitySet="Units" />
@@ -136,8 +136,8 @@
           <NavigationProperty Name="Units" Relationship="Models.FK_usersunit" FromRole="Users" ToRole="Unit" />
         </EntityType>
         <Association Name="FK_usersunit">
-          <End Role="Users" Type="Models.User" Multiplicity="1" />
-          <End Role="Unit" Type="Models.Unit" Multiplicity="*" />
+          <End Type="Models.User" Multiplicity="1" Role="Users" />
+          <End Type="Models.Unit" Multiplicity="*" Role="Unit" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="Id" />

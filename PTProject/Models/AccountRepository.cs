@@ -5,7 +5,12 @@ using System.Web;
 
 namespace PTProject.Models
 {
-    public class AccountRepository
+    public class AccountRepository : IAccountRepository
     {
+
+        public bool IsValidLogin(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
