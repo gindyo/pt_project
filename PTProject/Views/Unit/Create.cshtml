@@ -29,7 +29,8 @@
             @UnitHelper.type_selector()
             @Html.ValidationMessageFor(model => model.type)
         </div>
-
+        @{if(ViewBag.user_is_instructor){
+          
         <div class="editor-label">
             @Html.LabelFor(model => model.in_progress)
         </div>
@@ -53,7 +54,7 @@
             @Html.EditorFor(model => model.can_be_searched)
             @Html.ValidationMessageFor(model => model.can_be_searched)
         </div>
-
+        }}
         <p>
             <input type="submit" value="Create" />
         </p>

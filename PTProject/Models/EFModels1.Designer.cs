@@ -19,7 +19,6 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("Models", "FK_usersunit", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PTProject.Models.User), "Unit", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PTProject.Models.Unit), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_parentsearchable", "Unit", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PTProject.Models.Unit), "Searchable", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PTProject.Models.Searchable), true)]
 
 #endregion
@@ -103,22 +102,6 @@ namespace PTProject.Models
             }
         }
         private ObjectSet<Unit> _Units;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<User> Users
-        {
-            get
-            {
-                if ((_Users == null))
-                {
-                    _Users = base.CreateObjectSet<User>("Users");
-                }
-                return _Users;
-            }
-        }
-        private ObjectSet<User> _Users;
 
         #endregion
 
@@ -138,14 +121,6 @@ namespace PTProject.Models
         public void AddToUnits(Unit unit)
         {
             base.AddObject("Units", unit);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Users EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToUsers(User user)
-        {
-            base.AddObject("Users", user);
         }
 
         #endregion
@@ -375,7 +350,7 @@ namespace PTProject.Models
         /// <param name="title">Initial value of the title property.</param>
         /// <param name="type">Initial value of the type property.</param>
         /// <param name="usersId">Initial value of the usersId property.</param>
-        public static Unit CreateUnit(global::System.Int32 id, global::System.String title, global::System.String type, global::System.Int32 usersId)
+        public static Unit CreateUnit(global::System.Int32 id, global::System.String title, global::System.String type, global::System.String usersId)
         {
             Unit unit = new Unit();
             unit.Id = id;
@@ -541,7 +516,7 @@ namespace PTProject.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 usersId
+        public global::System.String usersId
         {
             get
             {
@@ -551,13 +526,13 @@ namespace PTProject.Models
             {
                 OnusersIdChanging(value);
                 ReportPropertyChanging("usersId");
-                _usersId = StructuralObject.SetValidValue(value, "usersId");
+                _usersId = StructuralObject.SetValidValue(value, false, "usersId");
                 ReportPropertyChanged("usersId");
                 OnusersIdChanged();
             }
         }
-        private global::System.Int32 _usersId;
-        partial void OnusersIdChanging(global::System.Int32 value);
+        private global::System.String _usersId;
+        partial void OnusersIdChanging(global::System.String value);
         partial void OnusersIdChanged();
     
         /// <summary>
@@ -594,44 +569,6 @@ namespace PTProject.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_usersunit", "Users")]
-        public User User
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("Models.FK_usersunit", "Users").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("Models.FK_usersunit", "Users").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<User> UserReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("Models.FK_usersunit", "Users");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("Models.FK_usersunit", "Users", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Models", "FK_parentsearchable", "Searchable")]
         public EntityCollection<Searchable> Searchables
         {
@@ -644,264 +581,6 @@ namespace PTProject.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Searchable>("Models.FK_parentsearchable", "Searchable", value);
-                }
-            }
-        }
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Models", Name="User")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class User : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new User object.
-        /// </summary>
-        /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="username">Initial value of the username property.</param>
-        /// <param name="password">Initial value of the password property.</param>
-        /// <param name="email">Initial value of the email property.</param>
-        /// <param name="type">Initial value of the type property.</param>
-        public static User CreateUser(global::System.Int32 id, global::System.String username, global::System.String password, global::System.String email, global::System.String type)
-        {
-            User user = new User();
-            user.Id = id;
-            user.username = username;
-            user.password = password;
-            user.email = email;
-            user.type = type;
-            return user;
-        }
-
-        #endregion
-
-        #region Simple Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Id
-        {
-            get
-            {
-                return _Id;
-            }
-            set
-            {
-                if (_Id != value)
-                {
-                    OnIdChanging(value);
-                    ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value, "Id");
-                    ReportPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        private global::System.Int32 _Id;
-        partial void OnIdChanging(global::System.Int32 value);
-        partial void OnIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String username
-        {
-            get
-            {
-                return _username;
-            }
-            set
-            {
-                OnusernameChanging(value);
-                ReportPropertyChanging("username");
-                _username = StructuralObject.SetValidValue(value, false, "username");
-                ReportPropertyChanged("username");
-                OnusernameChanged();
-            }
-        }
-        private global::System.String _username;
-        partial void OnusernameChanging(global::System.String value);
-        partial void OnusernameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String password
-        {
-            get
-            {
-                return _password;
-            }
-            set
-            {
-                OnpasswordChanging(value);
-                ReportPropertyChanging("password");
-                _password = StructuralObject.SetValidValue(value, false, "password");
-                ReportPropertyChanged("password");
-                OnpasswordChanged();
-            }
-        }
-        private global::System.String _password;
-        partial void OnpasswordChanging(global::System.String value);
-        partial void OnpasswordChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String email
-        {
-            get
-            {
-                return _email;
-            }
-            set
-            {
-                OnemailChanging(value);
-                ReportPropertyChanging("email");
-                _email = StructuralObject.SetValidValue(value, false, "email");
-                ReportPropertyChanged("email");
-                OnemailChanged();
-            }
-        }
-        private global::System.String _email;
-        partial void OnemailChanging(global::System.String value);
-        partial void OnemailChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String first_name
-        {
-            get
-            {
-                return _first_name;
-            }
-            set
-            {
-                Onfirst_nameChanging(value);
-                ReportPropertyChanging("first_name");
-                _first_name = StructuralObject.SetValidValue(value, true, "first_name");
-                ReportPropertyChanged("first_name");
-                Onfirst_nameChanged();
-            }
-        }
-        private global::System.String _first_name;
-        partial void Onfirst_nameChanging(global::System.String value);
-        partial void Onfirst_nameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String last_name
-        {
-            get
-            {
-                return _last_name;
-            }
-            set
-            {
-                Onlast_nameChanging(value);
-                ReportPropertyChanging("last_name");
-                _last_name = StructuralObject.SetValidValue(value, true, "last_name");
-                ReportPropertyChanged("last_name");
-                Onlast_nameChanged();
-            }
-        }
-        private global::System.String _last_name;
-        partial void Onlast_nameChanging(global::System.String value);
-        partial void Onlast_nameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String type
-        {
-            get
-            {
-                return _type;
-            }
-            set
-            {
-                OntypeChanging(value);
-                ReportPropertyChanging("type");
-                _type = StructuralObject.SetValidValue(value, false, "type");
-                ReportPropertyChanged("type");
-                OntypeChanged();
-            }
-        }
-        private global::System.String _type;
-        partial void OntypeChanging(global::System.String value);
-        partial void OntypeChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String alt_id
-        {
-            get
-            {
-                return _alt_id;
-            }
-            set
-            {
-                Onalt_idChanging(value);
-                ReportPropertyChanging("alt_id");
-                _alt_id = StructuralObject.SetValidValue(value, true, "alt_id");
-                ReportPropertyChanged("alt_id");
-                Onalt_idChanged();
-            }
-        }
-        private global::System.String _alt_id;
-        partial void Onalt_idChanging(global::System.String value);
-        partial void Onalt_idChanged();
-
-        #endregion
-
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_usersunit", "Unit")]
-        public EntityCollection<Unit> Units
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Unit>("Models.FK_usersunit", "Unit");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Unit>("Models.FK_usersunit", "Unit", value);
                 }
             }
         }

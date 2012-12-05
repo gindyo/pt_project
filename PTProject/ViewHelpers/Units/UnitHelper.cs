@@ -5,7 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Text;
+using System.Web.Security;
 using PTProject.Models;
+
 
 namespace PTProject.ViewHelpers
 {
@@ -63,34 +65,50 @@ namespace PTProject.ViewHelpers
             }
             select_tag.InnerHtml = option.ToString();
 
-            foreach (Searchable s in Searchable.unique_types())
+            foreach (Unit u in Unit.unique_types())
             {
                 
-                if (s.type == selected)
+                if (u.type == selected)
                 {
                     option.Attributes["selected"] = "selected";
                 }
-                option.Attributes["value"] = s.title;
-                option.SetInnerText(s.pretty_type());
+                option.Attributes["value"] = u.title;
+                option.SetInnerText(u.pretty_type());
                 select_tag.InnerHtml = new StringBuilder(select_tag.InnerHtml).Append(option.ToString()).ToString();
             }
 
             return new MvcHtmlString(select_tag.ToString());
         }
 
-        public static MvcHtmlString can_be_searched(int user_id)
+        public MvcHtmlString unit_components()
         {
-            var can_be_searched = new MvcHtmlString("");
-            User user;
+            var searchables = unit.Searchables.ToList<Searchable>();
+            var components = new StringBuilder();
+            foreach (var s in searchables)
+            {
+                components.Append(SearchablesHelper.print_searchable(s));
+            }
+            return new MvcHtmlString(components.ToString());
+        }
+
+        public MvcHtmlString unit_components_links()
+        {
+            
+            List<Searchable> unit_components = new List<Searchable>();
             using (PT_DB db = new PT_DB())
             {
-                user = db.Users.Single(u => u.Id == user_id);
+                unit_components = db.Searchables.Where(s => s.unitId == unit.Id ).ToList<Searchable>();
             }
 
-
-            return can_be_searched;
-
-            
+            StringBuilder links_str = new StringBuilder();
+            foreach (Searchable s in unit_components)
+            {
+                TagBuilder link = new TagBuilder("a");
+                link.Attributes["href"] = "/searchable/edit/" + s.Id.ToString();
+                link.SetInnerText(s.title);
+                links_str.Append(link).Append(new TagBuilder("br"));
+            }
+            return new MvcHtmlString(links_str.ToString());
         }
 
     }

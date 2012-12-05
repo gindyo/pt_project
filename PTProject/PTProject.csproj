@@ -114,6 +114,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ViewHelpers\Searchables\SearchablesHelper.cs" />
+    <Compile Include="ViewHelpers\Units\UserUnitsHelper.cs" />
     <Content Include="App_Code\AccountMembershipProvider.cs" />
     <Compile Include="Controllers\AccountController.cs">
       <SubType>Code</SubType>
@@ -124,7 +126,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="ModelMetadata\UserMeta.cs" />
     <Compile Include="ModelMetadata\UnitMeta.cs" />
     <Compile Include="Global.asax.cs">
@@ -146,11 +147,10 @@
     <Compile Include="Models\Searchable.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewHelpers\HomeHelper.cs" />
-    <Compile Include="ViewHelpers\ResultsHelper.cs" />
-    <Compile Include="ViewHelpers\UnitHelper.cs" />
+    <Compile Include="ViewHelpers\Home\HomeHelper.cs" />
+    <Compile Include="ViewHelpers\Results\ResultsHelper.cs" />
+    <Compile Include="ViewHelpers\Units\UnitHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\ASPNETDB.MDF" />
@@ -200,6 +200,7 @@
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
+    <Content Include="Models\EFModels.edmx.sql" />
     <Content Include="Scripts\home\index.js" />
     <Content Include="Scripts\jquery-1.6.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.2.js" />
@@ -299,6 +300,8 @@
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Unit\UserUnits.cshtml" />
+    <Content Include="Views\Unit\EditContent.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

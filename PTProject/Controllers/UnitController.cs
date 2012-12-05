@@ -5,12 +5,22 @@ using System.Web;
 using System.Web.Mvc;
 using PTProject.Models;
 using PTProject.ViewHelpers;
+using System.Web.Security;
 
 
 namespace PTProject.Controllers
 {
     public class UnitController : Controller
     {
+        private MembershipUser membership_user { get { return Membership.Provider.GetUser(User.Identity.Name, true); } }
+        private PT_DB db = new PT_DB();
+        private Unit _unit { 
+            get
+            {
+                var id = Int32.Parse((string)this.RouteData.Values["id"]);
+                return db.Units.SingleOrDefault(u => u.Id == id); 
+            } 
+        }
         //
         // GET: /Unit/
 
@@ -38,7 +48,7 @@ namespace PTProject.Controllers
 
         public ActionResult Create()
         {
-            //ViewBag.user = 
+            ViewBag.user_is_instructor = User.IsInRole("instructor");
             return View();
         } 
 
@@ -48,24 +58,17 @@ namespace PTProject.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
-            try
-            {
+            
+            
                 // TODO: Add insert logic here
                 Unit unit = new Unit();
                 unit.type = collection["type"];
-                unit.title = collection["title"]; 
-                unit.usersId = Convert.ToInt32(collection["usersId"]);
-                unit.in_progress = Convert.ToBoolean(collection["in_progress"]);
-                unit.approved = Convert.ToBoolean(collection["approved"]);
-
+                unit.title = collection["title"];
+                unit.usersId = membership_user.ProviderUserKey.ToString();
                 Unit.insert(unit);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+                return RedirectToAction("UserUnits");
+           
         }
         
         //
@@ -118,6 +121,31 @@ namespace PTProject.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult UserUnits()
+        {
+            UserUnitsHelper uuh = new UserUnitsHelper(membership_user);
+            
+            return View(uuh);
+        }
+
+        public ActionResult EditContent(int id)
+        {
+            UnitHelper uh = new UnitHelper(_unit);
+            ViewBag.unit_helper = uh;
+
+            return View(_unit);
+        }
+
+
+
+
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

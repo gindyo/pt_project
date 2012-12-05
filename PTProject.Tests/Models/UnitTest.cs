@@ -9,6 +9,7 @@ namespace PTProject.Tests.Models
     public class UnitTest
     {
         Unit u1;
+        
 
         [TestInitialize]
         public void initialize()
@@ -16,7 +17,7 @@ namespace PTProject.Tests.Models
             u1 = new Unit();
             u1.type = "type";
             u1.title = "title";
-            u1.usersId = 100;
+            u1.usersId = "gindyo";
             Unit.insert(u1); 
         }
 
@@ -27,6 +28,7 @@ namespace PTProject.Tests.Models
             {
                 u1.destroy();
             }
+           
         }
 
         [TestMethod]

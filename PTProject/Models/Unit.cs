@@ -56,6 +56,18 @@ namespace PTProject.Models{
             }
             return pty_type;
         }
+
+        public static List<Unit> unique_types()
+        {
+            using (PT_DB db = new PT_DB())
+            {
+                var types = from u in db.Units
+                            group u by u.type into unique_types
+                            select unique_types.FirstOrDefault();
+                return types.ToList();
+            }
+
+        }
          
       
     }

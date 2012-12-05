@@ -57,7 +57,6 @@
     <Compile Include="Controllers\ResultsControllerTest.cs" />
     <Compile Include="Factories\UnitFactory.cs" />
     <Compile Include="Factories\SearchableFactory.cs" />
-    <Compile Include="Factories\UserFactory.cs" />
     <Compile Include="Models\SearchableTest.cs" />
     <Compile Include="Models\UnitTest.cs" />
     <Compile Include="Models\UserTest.cs" />

@@ -54,6 +54,18 @@ namespace PTProject.Models
                 return db.Users.SingleOrDefault(u => u.email == email) == null ? false : true;
             }
         }
+        public void destroy()
+        {
+            using (var context = new PT_DB())
+            {
+                var query = (from s in context.Users
+                             where s.Id == this.Id
+                             select s).FirstOrDefault();
+
+                context.Users.DeleteObject(query);
+                context.SaveChanges();
+            }
+        }
 
         
     }

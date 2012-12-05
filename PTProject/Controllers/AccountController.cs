@@ -150,6 +150,12 @@ namespace PTProject.Controllers
             return View();
         }
 
+        public ActionResult Roles()
+        {
+            
+            return View();
+        }
+
         #region Status Codes
         private static string ErrorCodeToString(MembershipCreateStatus createStatus)
         {
