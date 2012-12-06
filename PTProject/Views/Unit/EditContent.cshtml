@@ -5,5 +5,12 @@
 }
 
 <h2>@Model.title</h2>
-@ViewBag.unit_helper.unit_components_links()
-@SearchablesHelper.new_searchable()
+   
+   <form action="@ViewBag.post_to"  method="post">
+       
+                <input type="hidden" name="unitId" value="@Model.Id" />
+                @SearchablesHelper.print_searchable(@ViewBag.searchable)
+                
+
+    </form>
+

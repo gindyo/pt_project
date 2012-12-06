@@ -17,17 +17,17 @@ namespace PTProject.ViewHelpers
 
             TagBuilder div = new TagBuilder("div");
             
-            foreach(Searchable s in unique_types)
+            foreach(string type in unique_types)
             {
                 var filter_div = new TagBuilder("div");
                 filter_div.Attributes["class"] = "filter";
                 TagBuilder input = new TagBuilder("input");
                 input.Attributes["type"] = "checkbox";
-                input.Attributes["id"] = s.type;
+                input.Attributes["id"] = SearchablesHelper.pretty_type(type);
                 input.Attributes["name"] = "search_types";
-                input.Attributes["value"] = s.type;
+                input.Attributes["value"] = SearchablesHelper.pretty_type(type);
                 input.Attributes["class"] = "search_types";
-                filter_div.InnerHtml = new StringBuilder(input.ToString(TagRenderMode.SelfClosing)).Append(s.pretty_type()).ToString();
+                filter_div.InnerHtml = new StringBuilder(input.ToString(TagRenderMode.SelfClosing)).Append(SearchablesHelper.pretty_type(type)).ToString();
                 types_block.Append(filter_div);
             }
             return new MvcHtmlString(types_block.ToString());

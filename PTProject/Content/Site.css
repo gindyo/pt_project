@@ -356,4 +356,9 @@ p{
     
     float: left;
     width: 600px;
-}                                      
+}  
+
+.searchable_textarea {
+width: 600px;
+clear: both;
+}                                    

@@ -27,11 +27,11 @@ namespace PTProject.Tests.Models
            
             db = new PT_DB();
             var factory = new SearchableFactory(db);
-            s1 = factory.create(0, "", "patient_history", "this is a tes dfasasdfasfsarchable");
-            s2 = factory.create(0, "", "social_history", "this is a tes dfasasdfasfsarchable");
-            s3 = factory.create(0, "", "social_history", "this is a tes dimitar");
-            s4 = factory.create(0, "", "patient_history", "this is a tes dimitar");
-            s5 = factory.create(0, "", "patient_history", "this is a tes dfasasdfasfsarchable");
+            s1 = factory.create(0,  "patient_history", "this is a tes dfasasdfasfsarchable");
+            s2 = factory.create(0,  "social_history", "this is a tes dfasasdfasfsarchable");
+            s3 = factory.create(0,  "social_history", "this is a tes dimitar");
+            s4 = factory.create(0,  "patient_history", "this is a tes dimitar");
+            s5 = factory.create(0,  "patient_history", "this is a tes dfasasdfasfsarchable");
             searcher = new Searcher(db);
         }
 
@@ -59,7 +59,7 @@ namespace PTProject.Tests.Models
             {
                 Unit p = UnitFactory.create();
                 Searchable s = new SearchableFactory(db).create(p.Id);
-                s.title = "Hello world";
+                s.type = "Hello world";
 
                 Assert.AreEqual(s.unitId, p.Id) ;
                 Searchable.destroy(s.Id);
@@ -69,7 +69,7 @@ namespace PTProject.Tests.Models
         [TestMethod]
         public void destroys_itself()
         {
-            Searchable s = new SearchableFactory(db).create(0, "", "", "this is a test seagaergaschable");
+            Searchable s = new SearchableFactory(db).create(0, "", "this is a test seagaergaschable");
             s = db.Searchables.Single(sl => sl.Id == s.Id);
             s.destroy();
             Assert.IsNull(searcher.find(s.Id));
@@ -99,7 +99,7 @@ namespace PTProject.Tests.Models
         public void searchable_assigns_search_term_to_results()
         {
             var content = "this is a tes dfasasdfasfsarchable";
-            Searchable s = new SearchableFactory(db).create(0, "", "", content );
+            Searchable s = new SearchableFactory(db).create(0, "", content );
             var found_s = searcher.find(null,"dfasasdfasfsarchable");
             Assert.AreEqual("dfasasdfasfsarchable", found_s.ToList().Last().search_term);
             s.destroy();
@@ -116,13 +116,6 @@ namespace PTProject.Tests.Models
 
 
 
-        [TestMethod]
-        public void searchable_pretty_type()
-        {
-            Searchable new_s = new SearchableFactory(db).build();
-            new_s.type = "make_pretty";
-            Assert.AreEqual("Make pretty", new_s.pretty_type());
-            
-        }
+       
     }
 }

@@ -38,7 +38,7 @@ namespace PTProject.ViewHelpers
 
                 var searchable_div_title = new TagBuilder("h3");
                 searchable_div_title.Attributes["class"] = "s_titles";
-                searchable_div_title.SetInnerText(s.pretty_type());
+                searchable_div_title.SetInnerText(SearchablesHelper.pretty_type(s.type));
                              
                 searchable_div.InnerHtml = searchable_div_title.ToString() + s.content;
                 
@@ -104,8 +104,8 @@ namespace PTProject.ViewHelpers
             foreach (Searchable s in unit_components)
             {
                 TagBuilder link = new TagBuilder("a");
-                link.Attributes["href"] = "/searchable/edit/" + s.Id.ToString();
-                link.SetInnerText(s.title);
+                link.Attributes["href"] = "/searchables/edit/" + s.Id.ToString();
+                link.SetInnerText(SearchablesHelper.pretty_type(s.type));
                 links_str.Append(link).Append(new TagBuilder("br"));
             }
             return new MvcHtmlString(links_str.ToString());
