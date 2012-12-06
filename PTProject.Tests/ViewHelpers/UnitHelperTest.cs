@@ -33,8 +33,8 @@ namespace PTProject.Tests.ViewHelpers
 
             var factory = new SearchableFactory(db);
             var s1 = factory.create(unit.Id);
-            var s2 = factory.create(unit.Id, "", "social_history", "the content of this social history");
-            var s3 = factory.create(unit.Id, "", "family_history", "the content of this family history");
+            var s2 = factory.create(unit.Id, "social_history", "the content of this social history");
+            var s3 = factory.create(unit.Id, "family_history", "the content of this family history");
 
             UnitHelper uh = new UnitHelper(unit);
             MvcHtmlString unit_html = uh.print();

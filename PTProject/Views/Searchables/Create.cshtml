@@ -1,0 +1,65 @@
+﻿@model PTProject.Models.Searchable
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Searchable</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.content)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.content)
+            @Html.ValidationMessageFor(model => model.content)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.type)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.type)
+            @Html.ValidationMessageFor(model => model.type)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => SearchablesHelper.pretty_type(model.type))
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => SearchablesHelper.pretty_type(model.type)))
+            @Html.ValidationMessageFor(model =>SearchablesHelper.pretty_type(model.type))
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.unitId, "Unit")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("unitId", String.Empty)
+            @Html.ValidationMessageFor(model => model.unitId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.search_term)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.search_term)
+            @Html.ValidationMessageFor(model => model.search_term)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

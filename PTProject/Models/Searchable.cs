@@ -10,7 +10,7 @@ namespace PTProject.Models
     {
         public string search_term { get; set; }
 
-        public string link { get{ return "/Unit/Details/"+this.Unit.Id;} }
+        public string link { get{ return "/Unit/Details/"+this.unitId;} }
 
         public string short_content()
         {
@@ -31,25 +31,16 @@ namespace PTProject.Models
                 return content.Substring(0, endOfShortContent) + "...";
             }
         }
+        
 
-        public string pretty_type()
-        {
-            string pty_type = "";
-            if (this.type.Count() > 0)
-            {
-                string no_ = this.type.Replace('_', ' ');
-                pty_type =  char.ToUpper(no_[0]) + no_.Substring(1);
-            }
-            return pty_type;
-        }
 
-        public static List<Searchable> unique_types()
+        public static List<string> unique_types()
         {
             using (PT_DB db = new PT_DB())
             {
                 var types = from u in db.Searchables
                             group u by u.type into unique_types
-                            select unique_types.FirstOrDefault();
+                            select unique_types.FirstOrDefault().type;
                 return types.ToList();
             }
            

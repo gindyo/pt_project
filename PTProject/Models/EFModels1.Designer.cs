@@ -147,15 +147,13 @@ namespace PTProject.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="content">Initial value of the content property.</param>
         /// <param name="type">Initial value of the type property.</param>
-        /// <param name="title">Initial value of the title property.</param>
         /// <param name="unitId">Initial value of the unitId property.</param>
-        public static Searchable CreateSearchable(global::System.Int32 id, global::System.String content, global::System.String type, global::System.String title, global::System.Int32 unitId)
+        public static Searchable CreateSearchable(global::System.Int32 id, global::System.String content, global::System.String type, global::System.Int32 unitId)
         {
             Searchable searchable = new Searchable();
             searchable.Id = id;
             searchable.content = content;
             searchable.type = type;
-            searchable.title = title;
             searchable.unitId = unitId;
             return searchable;
         }
@@ -238,30 +236,6 @@ namespace PTProject.Models
         private global::System.String _type;
         partial void OntypeChanging(global::System.String value);
         partial void OntypeChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String title
-        {
-            get
-            {
-                return _title;
-            }
-            set
-            {
-                OntitleChanging(value);
-                ReportPropertyChanging("title");
-                _title = StructuralObject.SetValidValue(value, false, "title");
-                ReportPropertyChanged("title");
-                OntitleChanged();
-            }
-        }
-        private global::System.String _title;
-        partial void OntitleChanging(global::System.String value);
-        partial void OntitleChanged();
     
         /// <summary>
         /// No Metadata Documentation available.

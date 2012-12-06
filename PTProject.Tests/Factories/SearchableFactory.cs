@@ -14,11 +14,11 @@ namespace PTProject.Tests.Models
         {
             db = context;
         }
-        public Searchable create(int _unit_id = 0, string _title = "Patient History", string _type = "patient_history", string _content = "bla bla bla" )
+        public Searchable create(int _unit_id = 0, string _type = "patient_history", string _content = "bla bla bla" )
         {
             
             _unit_id = _unit_id == 0 ? UnitFactory.create().Id : _unit_id;
-            Searchable new_s = new Searchable() { title = _title, type = _type, content = _content, unitId = _unit_id };
+            Searchable new_s = new Searchable() { type = _type, content = _content, unitId = _unit_id };
 
                 db.Searchables.AddObject(new_s);
                 db.SaveChanges();
@@ -26,10 +26,10 @@ namespace PTProject.Tests.Models
             return new_s;
         }
 
-        public Searchable build(string _title = "Patient History", string _type = "patient_history", string _content = "bla bla bla", int _parent_id = 0)
+        public Searchable build( string _type = "patient_history", string _content = "bla bla bla", int _parent_id = 0)
         {
             
-                Searchable new_s = new Searchable() { title = _title, type = _type, content = _content, Id = _parent_id };
+                Searchable new_s = new Searchable() { type = _type, content = _content, Id = _parent_id };
                 return new_s;
             
         }

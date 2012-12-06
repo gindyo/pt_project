@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 12/05/2012 03:11:51
+-- Date Created: 12/06/2012 07:52:26
 -- Generated from EDMX file: C:\Users\dimitar\Documents\Visual Studio 2012\Projects\pt_project\PTProject\Models\EFModels.edmx
 -- --------------------------------------------------
 
@@ -41,7 +41,6 @@ CREATE TABLE [dbo].[Searchables] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [content] nvarchar(max)  NOT NULL,
     [type] nvarchar(max)  NOT NULL,
-    [title] nvarchar(max)  NOT NULL,
     [unitId] int  NOT NULL
 );
 GO

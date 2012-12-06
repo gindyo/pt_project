@@ -1,0 +1,45 @@
+﻿@model PTProject.Models.Searchable
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Searchable</legend>
+
+    <div class="display-label">content</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.content)
+    </div>
+
+    <div class="display-label">type</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.type)
+    </div>
+
+    <div class="display-label">title</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => SearchablesHelper.pretty_type(model.type))
+    </div>
+
+    <div class="display-label">Unit</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Unit.type)
+    </div>
+
+    <div class="display-label">search_term</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.search_term)
+    </div>
+
+    <div class="display-label">link</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.link)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

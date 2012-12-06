@@ -33,7 +33,9 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PrecompileBeforePublish>true</PrecompileBeforePublish>
+    <PrecompileBeforePublish>false</PrecompileBeforePublish>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,6 +44,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
+    <PublishDatabases>false</PublishDatabases>
+    <PackageAsSingleFile>false</PackageAsSingleFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -114,6 +119,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\SearchablesController.cs" />
     <Compile Include="ViewHelpers\Searchables\SearchablesHelper.cs" />
     <Compile Include="ViewHelpers\Units\UserUnitsHelper.cs" />
     <Content Include="App_Code\AccountMembershipProvider.cs" />
@@ -157,7 +163,6 @@
     <Content Include="App_Data\aspnetdb_log.ldf">
       <DependentUpon>ASPNETDB.MDF</DependentUpon>
     </Content>
-    <Content Include="App_Data\ldf\PHT_DB_log.ldf" />
     <Content Include="App_Data\PHT_DB.mdf" />
     <Content Include="App_Data\PHT_DB_log.ldf">
       <DependentUpon>PHT_DB.mdf</DependentUpon>
@@ -172,6 +177,7 @@
     <Content Include="Content\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\css\Unit\details.css" />
     <Content Include="Content\css\home\index.css" />
+    <Content Include="Content\css\Unit\editcontent.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -212,6 +218,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
     <Content Include="Scripts\results\index.js" />
+    <Content Include="Scripts\unit\EditContent.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -246,6 +253,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AbstractClasses\" />
+    <Folder Include="App_Data\ldf\" />
     <Folder Include="Content\css\results\" />
     <Folder Include="DB\" />
     <Folder Include="Interfaces\" />
@@ -302,6 +310,25 @@
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Unit\UserUnits.cshtml" />
     <Content Include="Views\Unit\EditContent.cshtml" />
+    <Content Include="Views\Searchables\Index.cshtml" />
+    <Content Include="Views\Searchables\Details.cshtml" />
+    <Content Include="Views\Searchables\Create.cshtml" />
+    <Content Include="Views\Searchables\Edit.cshtml" />
+    <Content Include="Views\Searchables\Delete.cshtml" />
+    <Content Include="Views\Unit\Index.cshtml" />
+    <Content Include="Views\Unit\Delete.cshtml" />
+    <Content Include="Views\Unit\Edit.cshtml" />
+    <Content Include="Views\Home\Tutorials.cshtml" />
+    <Content Include="Views\Home\AdministrativePageInstruct.cshtml" />
+    <Content Include="Views\Home\HomePageTutorial.cshtml" />
+    <Content Include="Views\Home\LogOnInstructions.cshtml" />
+    <Content Include="Views\Home\RegisterInstructions.cshtml" />
+    <Content Include="Views\Home\UserHomePageInstruct.cshtml" />
+    <Content Include="Views\Home\UserManual.cshtml" />
+    <None Include="Properties\PublishProfiles\ptproject - FTP %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\ptproject - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\ptproject - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\ptproject - Web Deploy.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -325,7 +352,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>18720</DevelopmentServerPort>
+          <DevelopmentServerPort>9085</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/PTProject</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

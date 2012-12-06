@@ -33,11 +33,11 @@ namespace PTProject.Tests.Models
 
 
            var factory = new SearchableFactory(db);
-           Searchable s1 = factory.create(new_u.Id, "", "patient_history", "this is a tes dfasasdfasfsarchable");
-           Searchable s2 = factory.create(new_u.Id, "", "social_history", "this is a tes dfasasdfasfsarchable");
-           Searchable s3 = factory.create(new_u.Id, "", "social_history", "this is a tes dfasasdfasfsarchable");
-           Searchable s4 = factory.create(new_u.Id, "", "patient_history", "this is a tes dfasasdfasfsarchable");
-           Searchable s5 = factory.create(new_u.Id, "", "patient_history", "this is a tes dfasasdfasfsarchable");
+           Searchable s1 = factory.create(new_u.Id, "patient_history", "this is a tes dfasasdfasfsarchable");
+           Searchable s2 = factory.create(new_u.Id, "social_history", "this is a tes dfasasdfasfsarchable");
+           Searchable s3 = factory.create(new_u.Id, "social_history", "this is a tes dfasasdfasfsarchable");
+           Searchable s4 = factory.create(new_u.Id, "patient_history", "this is a tes dfasasdfasfsarchable");
+           Searchable s5 = factory.create(new_u.Id, "patient_history", "this is a tes dfasasdfasfsarchable");
 
 
 

@@ -34,7 +34,7 @@ namespace PTProject.ViewHelpers
                bold_s_term.InnerHtml = el.search_term;
 
                link.Attributes["href"] = el.link;
-               link.SetInnerText(new StringBuilder(el.Unit.title).Append(": ").Append(el.pretty_type()).ToString());
+               link.SetInnerText(new StringBuilder(el.Unit.title).Append(": ").Append(SearchablesHelper.pretty_type(el.type)).ToString());
 
                short_content.InnerHtml =  el.short_content().Replace(el.search_term, bold_s_term.ToString());
 
