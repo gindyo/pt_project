@@ -1,0 +1,15 @@
+﻿@model PTProject.Models.CaseStudy
+
+@{
+    <h1></h1>  
+
+    foreach(PTProject.Models.Searchable component in Model.contents)
+    {
+        <p>
+            <b>@component.pretty_type()</b><br />
+            @component.content
+
+        </p>
+    } 
+    
+    }

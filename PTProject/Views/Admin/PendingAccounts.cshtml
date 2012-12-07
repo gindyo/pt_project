@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "PendingAccounts";
+}
+
+<form>
+    <button type="submit" value="Create_Casefile">Create New Casefile</button>
+    <input type="button" value="Return" onclick="window.location.href='/Admin/'" />
+</form>
+
+<h2>Pending Accounts</h2>
+
+<form>
+    <table border="1">
+        <tr>
+            <th>Select</th>
+            <th>Account UserName</th>
+            <th>Date Submitted</th>
+            <th>Requested By:</th>
+            <th>Student Z ID#</th>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="Account1" /></td>
+            <td>billy123</td>
+            <td>1/2/2012</td>
+            <td>William Valley</td>
+            <td>Z95468741</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="Account2" /></td>
+            <td>sallyg</td>
+            <td>1/3/2012</td>
+            <td>Sally Green</td>
+            <td>Z1243657</td>
+        </tr>
+
+    </table>
+    <br />
+    <button type="submit" value="View">View</button>
+    <button type="submit" value="Approve">Approve</button>
+    <button type="submit" value="Reject">Reject</button>
+    <br />
+</form>
+

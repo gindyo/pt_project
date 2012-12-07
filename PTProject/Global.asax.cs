@@ -6,14 +6,28 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Security;
+using Ninject.Modules;
+using PTProject.Models;
+using Ninject;
 
 namespace PTProject
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
+    internal class MyNinjectModules : NinjectModule
+    {
+        public override void Load()
+        {
+            Bind<IAccountRepository>()
+                .To<User>();
+        }
+    }
 
     public class MvcApplication : System.Web.HttpApplication
     {
+        private IKernel _kernel = new StandardKernel(new MyNinjectModules());
+
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
@@ -21,13 +35,18 @@ namespace PTProject
 
         public static void RegisterRoutes(RouteCollection routes)
         {
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
-            
+            routes.MapRoute(
+                "SearchResults", // Route name
+                "{controller}/{action}/{search_types}/{search_term}", // URL with parameters
+                new { controller = "Results", action = "Index" } // Parameter defaults
+            );
 
         }
 
@@ -40,6 +59,10 @@ namespace PTProject
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+            _kernel.Inject(Membership.Provider);
         }
+
+        
+
     }
 }

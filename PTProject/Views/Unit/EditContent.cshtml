@@ -1,0 +1,16 @@
+﻿@model PTProject.Models.Unit
+
+@{
+    ViewBag.Title = "EditContent";
+}
+
+<h2>@Model.title</h2>
+   
+   <form action="@ViewBag.post_to"  method="post">
+       
+                <input type="hidden" name="unitId" value="@Model.Id" />
+                @SearchablesHelper.print_searchable(@ViewBag.searchable)
+                
+
+    </form>
+

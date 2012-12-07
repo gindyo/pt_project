@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTProject", "PTProject\PTPr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTProject.Tests", "PTProject.Tests\PTProject.Tests.csproj", "{BE1163C4-01DC-430E-89D7-0EB816EBC14E}"
 EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ModelingProject1", "ModelingProject1\ModelingProject1.modelproj", "{8FA36F72-11B3-43E2-9DF5-AFBA2379A140}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7A1611DA-0277-4774-A774-05BE4D22F628}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A1611DA-0277-4774-A774-05BE4D22F628}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A1611DA-0277-4774-A774-05BE4D22F628}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FA36F72-11B3-43E2-9DF5-AFBA2379A140}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FA36F72-11B3-43E2-9DF5-AFBA2379A140}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FA36F72-11B3-43E2-9DF5-AFBA2379A140}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FA36F72-11B3-43E2-9DF5-AFBA2379A140}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BE1163C4-01DC-430E-89D7-0EB816EBC14E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BE1163C4-01DC-430E-89D7-0EB816EBC14E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE1163C4-01DC-430E-89D7-0EB816EBC14E}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,0 +1,53 @@
+﻿@model PTProject.Models.Unit
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Unit</legend>
+
+    <div class="display-label">title</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.title)
+    </div>
+
+    <div class="display-label">type</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.type)
+    </div>
+
+    <div class="display-label">unit_id</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.unit_id)
+    </div>
+
+    <div class="display-label">in_progress</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.in_progress)
+    </div>
+
+    <div class="display-label">approved</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.approved)
+    </div>
+
+    <div class="display-label">usersId</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.usersId)
+    </div>
+
+    <div class="display-label">can_be_searched</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.can_be_searched)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
